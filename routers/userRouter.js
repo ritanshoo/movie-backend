@@ -11,7 +11,7 @@ const authenticate = require('../middlewares/authenticate')
 /*
 user Router
 Usage : Register a User
-URL :http://127.0.0.1:5000/api/users/register
+URL :${BASE_URI_BACKEND}/api/users/register
 parameters : name ,email,password
 methode : post
 access : public
@@ -63,7 +63,7 @@ router.post('/register' ,[
 /*
 user Router
 Usage : Login a User
-URL :http://127.0.0.1:5000/api/users/login
+URL :${BASE_URI_BACKEND}/api/users/login
 parameters : email,password
 methode : post
 access : public
@@ -86,7 +86,7 @@ router.post('/login' ,  [
 
              let user = await User.findOne({email : email})
              if (!user){
-                 return response.status(401).json([{message : 'invalid credential'}])
+                 return response.status(401).json([{message : 'email not exists'}])
              }
 
              // check the password
@@ -124,7 +124,7 @@ router.post('/login' ,  [
 /*
 user Router
 Usage : Get User
-URL :http://127.0.0.1:5000/api/users/
+URL :${BASE_URI_BACKEND}/api/users/
 parameters : no filed required
 methode : get
 access : Private
